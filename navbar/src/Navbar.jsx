@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import logo from "./logo.svg"; 
 import { FaBars } from "react-icons/fa";
-import { links } from "./data";
+import { links, social } from "./data";
 
 const Navbar = () => {
     const [showLinks, setShowLinks] = useState(false);
@@ -24,7 +24,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='nav-center'>
+        <nav className='nav-center'>
             <div className="nav-header">
                 <img src={logo} alt="Logo" className="logo" /> 
                 <button className="nav-toggle" onClick={toggleLinks}>
@@ -43,7 +43,16 @@ const Navbar = () => {
                     })}
                 </ul>
             </div>
-        </div>
+            <ul className="social-icons">
+                {social.map((socialIcon)=>{
+                    const {id,url,icon} = socialIcon;
+                    return <li key={id}><a href={url}></a>{icon}</li>
+                }) 
+                }
+                
+
+            </ul>
+        </nav>
     );
 };
 
